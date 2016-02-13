@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+    {% load thumbnail %}
+    {% load notifications_tags %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block description %}{% endblock description %}">
+    <meta name="author" content="Arun Ravindran">
+    <link rel="shortcut icon" href="{% static 'site/ico/favicon.ico' %}">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+      .carousel-inner > .item > img,
+      .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+      }
+    </style>
+
+    <title>{% block title %}{% include "_brandname.html" %} :: {% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Custom styles for this site -->
+    {% block styles %}
+    <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'site/css/style.css' %}" rel="stylesheet">
+    {% endblock styles %}
+
+    <!-- Custom tags for the head tag -->
+    {% block extrahead %}{% endblock extrahead %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    {% block navbar %}
+    <div id="header" role="navigation" >
+        <div id="toptb">
+          <a class="navbar-brand" href="{% url 'home' %}" style="color: rgb(255, 255, 255);">
+            {% block navbar-brand %}
+              <img src="{% static 'site/img/logo.png' %}" alt="logo" >
+                {% include "_brandname.html" %}
+            {% endblock %}
+          </a>
+        {% block navbar-menu %}
+        <div class="topNav">
+            {% block navbar-right %}
+            {% endblock %}
+            <a class="bu" style="color: rgb(255,255,255)">400-820-5800</a>
+        </div><!--/.nav-collapse -->
+        {% endblock %}
+        </div>
+    </div>
+    {% endblock navbar %}
+
+    {% block messages %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+            <a class="close" data-dismiss="alert">×</a>
+            {{ message|safe }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endblock %}
+
+    {% block splash %}
+    {% endblock splash %}
+    
+    {% block container %}
+    <!--<div class="container">-->
+
+      <!--<div class="starter-template">-->
+        <!--<h1>New Project</h1>-->
+        <!--<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>-->
+      <!--</div>-->
+
+    <!--</div>&lt;!&ndash; /.container &ndash;&gt;-->
+    {% endblock container %}
+
+    <!-- Site footer -->
+    {% block footer %}
+    <div id="contactUs">
+      <ul class="cl">
+        <li class="cl">
+          <a href="#">
+            <i class="fa fa-weixin" style="font-size: 100px; color: rgb(255, 255, 255);"></i>
+            <h1 style="color: rgb(255, 255, 255);">官方微信</h1>
+          </a>
+        </li>
+        <li class="cl">
+          <a href="http://weibo.com/" target="_blank">
+            <i class="fa fa-weibo" style="font-size: 100px; color: rgb(255, 255, 255);"></i>
+            <h1 style="color: rgb(255, 255, 255);">官方微博</h1>
+          </a>
+        </li>
+        <li class="cl">
+          <a href="#">
+            <i class="fa fa-phone" style="font-size: 100px; color: rgb(255, 255, 255);"></i>
+            <h1 style="color: rgb(255, 255, 255);">联系电话</h1>
+          </a>
+        </li>
+        <li class="cl">
+          <a href="mailto:service@daqingjia.cn">
+            <i class="fa fa-envelope" style="font-size: 100px; color: rgb(255, 255, 255);"></i>
+            <h1 style="color: rgb(255, 255, 255);">客服邮箱</h1>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="footer">
+      <p>沪ICP备15000598-1</p>
+
+      <p>Copyright © 2016 上海心莲信息科技有限公司</p>
+    </div>
+    <div class="weixin-download" style="display: none">
+      <div class="weixin-download-tips"><strong>不能开始下载？</strong>请点击右上角<br>并选择 <em>“在浏览器中打开”</em></div>
+      <i class="icon-weixin-download-tips-arrow"></i>
+    </div>
+
+    <iframe frameborder="0" scrolling="no" style="border: 0px; display: none; background-color: transparent;"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" style="display: none;" input="null" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:false,&quot;ss&quot;:true}"></div></body></html>    {% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    {% block scripts %}
+    {{block.super}}
+    <script>
+      $(document).ready(function() {
+      function toggleNavbarMethod() {
+        if ($(window).width() > 768) {
+            $('.navbar .dropdown').on('mouseover', function(){
+                $('.dropdown-toggle', this).trigger('click');
+            }).on('mouseout', function(){
+                $('.dropdown-toggle', this).trigger('click').blur();
+            });
+        }
+        else {
+            $('.navbar .dropdown').off('mouseover').off('mouseout');
+        }
+      }
+      toggleNavbarMethod();
+      $(window).resize(toggleNavbarMethod);
+      });
+    </script>
+    <script>
+      $(function () {
+          'use strict';
+
+          function getParameterByName(name) {
+              name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+              var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                  results = regex.exec(location.search);
+              return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+          }
+
+          /* Slides. */
+          (function () {
+              var slideId = 1;
+              setInterval(function () {
+                  var bgColor = $('#slide' + slideId + ' img').attr('data-color');
+                  $('#slide, body, #header, #footer').css('background-color', bgColor);
+                  $('#contactUs ul li a i').css('background-color', bgColor);
+                  $('.mobileDownload').css('border-color', bgColor);
+                  slideId = slideId + 1;
+                  if (slideId == 3) {
+                      slideId = 0
+                  }
+                  ;
+              }, 5000);
+
+              if ($(window).width() < 1000) {
+                  $('#slide').height($(window).width() / 1000 * 490);
+              }
+              ;
+          })();
+
+          /* 'Coming soon' notification. */
+          /*
+           (function () {
+           $('#slide #partDownload .ADownload').click(function(e) {
+           e.preventDefault();
+           $('body').append('<div id="pleaseWait" onclick="$(this).remove()"><a>即将推出，敬请期待！</a></div>');
+           });
+           })();
+           */
+
+          /*
+           * UA sniffing. Display different download link for Android or iOS. Download tips for Weixin also handled there.
+           * 2015-09-08 by Microdog: Handle promotion channel packages
+           */
+          (function () {
+              var ua = navigator.userAgent.toLowerCase(),
+                  isWeixin = /micromessenger/.test(ua),
+                  isAndroid = /android/.test(ua),
+                  isAppleMobile = /(ipad|ipod|iphone)/.test(ua);
+              var downloadBtnDesktop = $('#btnDownload');
+              var downloadBtnMobile = $('.mobileDownload');
+              var downloadBtnAndroidMobile = $('#AMobileDownload');
+              var downloadBtnIOSMobile = $('#IMobileDownload');
+              var downloadBtnAndroidDesktop = $('.ADownload');
+
+              var androidDownloadUrl = 'https://dn-simplr-downloads.qbox.me/Android';
+              var pmChannel = getParameterByName('channel');
+              if (pmChannel) {
+                  androidDownloadUrl += '/channel/simplr-latest_' + pmChannel + '.apk';
+              } else {
+                  androidDownloadUrl += '/simplr-latest.apk';  // Latest package
+              }
+
+              downloadBtnDesktop.attr('href', androidDownloadUrl);
+              downloadBtnAndroidDesktop.attr('href', androidDownloadUrl);
+              downloadBtnAndroidMobile.attr('href', androidDownloadUrl);
+
+              if (isAppleMobile) {
+                  downloadBtnAndroidMobile.hide();
+                  downloadBtnDesktop.attr('href', 'https://itunes.apple.com/cn/app/simplr/id966909495');
+              } else if (isAndroid) {
+                  downloadBtnIOSMobile.hide();
+              }
+
+              if (!isWeixin) {
+                  return;
+              }
+
+              $('.weixin-download').on('click', function () {
+                  $(this).hide();
+              });
+
+              downloadBtnMobile.on('click', function (e) {
+                  /* e.preventDefault(); */
+                  $('.weixin-download').show();
+              });
+          })();
+      });
+    </script>
+    {% endblock scripts %}
+  </body>
+</html>
+
+
