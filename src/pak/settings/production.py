@@ -8,7 +8,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 # Must mention ALLOWED_HOSTS in production!
-ALLOWED_HOSTS = [".webfactional.com"]
+ALLOWED_HOSTS = ["112.74.88.216", ".webfactional.com"]
 
 # Cache the templates in memory for speed-up
 loaders = [
