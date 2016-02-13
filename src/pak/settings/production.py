@@ -7,16 +7,16 @@ import logging.config
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pakchoi_db',
-        'USER': 'pakchoi',
-        'PASSWORD': '123456',
-        'HOST': '',
-        'PORT': '',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'pakchoi_db',
+#         'USER': 'pakchoi',
+#         'PASSWORD': '123456',
+#         'HOST': '',
+#         'PORT': '',
+#     }
+# }
 
 # Must mention ALLOWED_HOSTS in production!
 ALLOWED_HOSTS = [".webfactional.com"]
@@ -33,7 +33,7 @@ TEMPLATES[0]['OPTIONS'].update({"loaders": loaders})
 TEMPLATES[0].update({"APP_DIRS": False})
 
 # Define STATIC_ROOT for the collectstatic command
-STATIC_ROOT = '/home/raynald/webapps/pakchoi_static'
+STATIC_ROOT = '/static'
 
 # Log everything to the logs directory at the top
 LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
