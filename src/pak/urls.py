@@ -14,8 +14,9 @@ urlpatterns = [
     url(r'app/$', views.AppPage.as_view(), name='app'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(accounts.urls, namespace='accounts')),
-
-    url(r'error/$', views.ErrorPage.as_view(), name='error-page')
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'error/$', views.ErrorPage.as_view(), name='error-page'),
+    url(r'^photologue/', include('photologue.urls', namespace='photologue')),
 ]
 
 # User-uploaded files like profile pics need to be served in development

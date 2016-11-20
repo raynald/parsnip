@@ -20,3 +20,4 @@ class AboutPage(generic.TemplateView):
 
 class ErrorPage(generic.TemplateView):
     template_name = "error.html"
+
